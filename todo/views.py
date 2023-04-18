@@ -20,3 +20,13 @@ def listProjects(request):
     return render(request,'projects/list.html',{
         "projects":projects
     }) 
+
+def showFormCreateProject(request):
+    return render(request,'projects/create.html')
+
+def storeProject(request):
+    Project.objects.create(
+        name = request.POST["name"],
+        description = request.POST["description"]
+    )
+    return HttpResponse("Proyecto creado")
