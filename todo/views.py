@@ -19,4 +19,4 @@ def listProjects(request):
     projects = Project.objects.all()
     return render(request,'projects/list.html',{
         "projects":projects
-    })
+    }) 
