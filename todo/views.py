@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Project
 
@@ -25,8 +25,25 @@ def showFormCreateProject(request):
     return render(request,'projects/create.html')
 
 def storeProject(request):
-    Project.objects.create(
+    project = Project.objects.create(
         name = request.POST["name"],
         description = request.POST["description"]
     )
-    return HttpResponse("Proyecto creado")
+    project.save()
+    return redirect('projects.list')
+
+def showFormEditProject(request,project_id):
+    project = get_object_or_404(Project,id=project_id)
+    return render(request,'projects/edit.html',{
+        'project': project
+    })
+
+def updateProject(request,project_id):
+    project = get_object_or_404(Project,id=project_id)
+
+    project.name = request.POST["name"]
+    project.description = request.POST["description"]
+
+    project.save()
+
+    return redirect('projects.list')

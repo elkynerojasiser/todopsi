@@ -26,6 +26,7 @@
                 <td>ID</td>
                 <td>Name</td>
                 <td>Description</td>
+                <td>Actions</td>
               </tr>
             </thead>
             <tbody>
@@ -39,6 +40,12 @@
                 </td>
                 <td>
                   {{ project.description }}
+                </td>
+                <td>
+                  <div class="d-flex p-2">
+                    <a class="btn btn-warning" style="margin-right: 5px;" href="{% url 'projects.edit' project.id %}">Edit</a>
+                    <a class="btn btn-danger" href="">Delete</a>
+                  </div>
                 </td>
               </tr>
               {% endfor %}
