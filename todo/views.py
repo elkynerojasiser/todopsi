@@ -47,3 +47,14 @@ def updateProject(request,project_id):
     project.save()
 
     return redirect('projects.list')
+
+def showConfirmDeleteProject(request, project_id):
+    project = get_object_or_404(Project, id=project_id)
+    return render(request,'projects/delete.html',{
+        'project' : project
+    })
+
+def destroyProject(request, project_id):
+    project = get_object_or_404(Project, id=project_id)
+    project.delete()
+    return redirect('projects.list')

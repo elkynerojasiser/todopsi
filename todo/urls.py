@@ -10,5 +10,7 @@ urlpatterns = [
     path('projects-create/',views.showFormCreateProject,name="projects.create"),
     path('projects-store',views.storeProject,name="projects.store"),
     path('projects-edit/<int:project_id>/',views.showFormEditProject,name="projects.edit"),
-    path('projects-update/<int:project_id>',views.updateProject,name="projects.update")
+    path('projects-update/<int:project_id>',views.updateProject,name="projects.update"),
+    path('projects-delete/<int:project_id>',views.showConfirmDeleteProject,name="projects.delete"),
+    path('projects-destroy/<int:project_id>',views.destroyProject,name="projects.destroy"),
 ]
