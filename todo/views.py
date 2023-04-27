@@ -58,3 +58,9 @@ def destroyProject(request, project_id):
     project = get_object_or_404(Project, id=project_id)
     project.delete()
     return redirect('projects.list')
+
+def showDetailProject(request, project_id):
+    project = get_object_or_404(Project, id=project_id)
+    return render(request, 'projects/detail.html',{
+        'project': project
+    })
