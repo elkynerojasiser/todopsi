@@ -14,4 +14,6 @@ urlpatterns = [
     path('projects-delete/<int:project_id>',views.showConfirmDeleteProject,name="projects.delete"),
     path('projects-destroy/<int:project_id>',views.destroyProject,name="projects.destroy"),
     path('projects-detail/<int:project_id>',views.showDetailProject,name="projects.detail"),
+    path('signup-form/',views.showSignupForm,name="signup-form"),
+    path('signup/',views.signup,name="signup")
 ]

@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Project
+from django.contrib.auth.models import User
+from django.contrib.auth import login, logout, authenticate
 
 # Create your views here.
 """_summary
@@ -64,3 +66,24 @@ def showDetailProject(request, project_id):
     return render(request, 'projects/detail.html',{
         'project': project
     })
+
+def showSignupForm(request):
+    return render(request,'users/signup-form.html')
+
+def signup(request):
+    if(request.POST['password'] == request.POST['password2']):
+        try:
+            user = User.objects.create(
+                username=request.POST["username"],
+                email=request.POST["email"],
+                password=request.POST["password"],
+                first_name=request.POST["first_name"],
+                last_name=request.POST["last_name"]
+            )
+            user.save()
+            login(request,user)
+            return redirect('projects.list')
+        except:
+            return HttpResponse('something was wrong')
+    else:
+        return HttpResponse('The password fields don´t match')
