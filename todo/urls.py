@@ -15,5 +15,8 @@ urlpatterns = [
     path('projects-destroy/<int:project_id>',views.destroyProject,name="projects.destroy"),
     path('projects-detail/<int:project_id>',views.showDetailProject,name="projects.detail"),
     path('signup-form/',views.showSignupForm,name="signup-form"),
-    path('signup/',views.signup,name="signup")
+    path('signup/',views.signup,name="signup"),
+    path('login-form/',views.showLoginForm,name="login-form"),
+    path('login/',views.startSession,name='login'),
+    path('logout/',views.finishSession,name='logout')
 ]
