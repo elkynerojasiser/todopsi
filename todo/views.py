@@ -73,7 +73,7 @@ def showSignupForm(request):
 def signup(request):
     if(request.POST['password'] == request.POST['password2']):
         try:
-            user = User.objects.create(
+            user = User.objects.create_user(
                 username=request.POST["username"],
                 email=request.POST["email"],
                 password=request.POST["password"],
